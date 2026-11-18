@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <title>Week 10 Assignment - GIS 5547</title>
+  <link rel="stylesheet" href="https://js.arcgis.com/4.24/esri/themes/light/main.css" />
+  <script src="https://js.arcgis.com/4.24/"></script>
+  <style>
+    html,
+body,
+#viewDiv {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+}
+
+#buttonContainer {
+  position: absolute;
+  top: 10px;
+  right: 10px;}
+#clickButton{
+  background-color: blue;
+  }
+  </style>
+</head>
+
+<body>
+  <div id="viewDiv"></div>
+  <a href="https://www.arcgis.com/apps/mapviewer/index.html?webmap=b9155ee0caa04fcf9744e25cad76b44a">ArcGIS intact habitat map viewer</a>
+  <!--A container the button-->
+  <div id="buttonContainer">
+    <button id="clickButton">Click</button>
+  </div>
+<script>
+  require(["esri/views/MapView", "esri/WebMap"], (MapView, WebMap)=> {
+  const webmap = new WebMap({
+    portalItem: {
+      id: "b9155ee0caa04fcf9744e25cad76b44a"
+    }
+  });
+  const myButton = document.getElementById("clickButton");
+   const view = new MapView({
+    map: webmap,
+    container: "viewDiv",
+    center: [-93.20807, 44.97127],
+    zoom: 6
+   });
+
+myButton.addEventListener("click", () => {
+  window.open("https://www.arcgis.com/apps/mapviewer/index.html?webmap=b9155ee0caa04fcf9744e25cad76b44a");
+});
+  });
+</script>
+</body>
+
+</html>
